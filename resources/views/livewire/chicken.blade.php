@@ -35,7 +35,7 @@
     @if($showModal)
         <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div class="bg-white p-6 rounded-lg w-1/3">
-                <h3 class="text-lg mb-4">{{ $chickenId ? 'Edit' : 'Create' }} Farm</h3>
+                <h3 class="text-lg mb-4">{{ $chickenId ? 'Edit' : 'Create' }} Chicken</h3>
                 <form wire:submit.prevent="save">
                     <div class="mb-4">
                         <label>Name</label>
