@@ -43,6 +43,7 @@ class Chicken extends Component
     public function create()
     {
         $this->uopId = session('selected_uop');
+        $this->name = '';
         $this->showModal = true;
     }
 
