@@ -9,7 +9,7 @@ use Livewire\Component;
 #[Layout('layouts.app')]
 class Farm extends Component
 {
-    public $farms = [];
+   public $farms = [];
    public $showModal = false;
 
    public $farmId = '';

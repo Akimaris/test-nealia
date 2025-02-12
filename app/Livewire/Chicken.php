@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use \App\Models\Chicken as ChickenModel;
 
 #[Layout('layouts.app')]
 class Chicken extends Component
@@ -24,7 +25,7 @@ class Chicken extends Component
 
     public function loadChickens()
     {
-        $this->chickens = \App\Models\Chicken::where('uop_id', session('selected_uop'))->get();
+        $this->chickens = ChickenModel::all();
     }
 
     public function index()
@@ -34,7 +35,7 @@ class Chicken extends Component
 
     public function edit($id)
     {
-        $farm = \App\Models\Chicken::findOrFail($id);
+        $farm = ChickenModel::findOrFail($id);
         $this->chickenId = $id;
         $this->name = $farm->name;
         $this->showModal = true;
@@ -54,23 +55,21 @@ class Chicken extends Component
         ]);
 
         if ($this->chickenId) {
-            $farm = \App\Models\Chicken::findOrFail($this->chickenId);
+            $farm = ChickenModel::findOrFail($this->chickenId);
             $farm->update($validated);
         } else {
-            \App\Models\Chicken::create([
+            ChickenModel::create([
                 'name' => $validated['name'],
                 'uop_id' => $this->uopId,
             ]);
         }
-
-
         $this->showModal = false;
         $this->loadChickens();
     }
 
     public function delete($chickenId)
     {
-        $farm = \App\Models\Chicken::findOrFail($chickenId);
+        $farm = ChickenModel::findOrFail($chickenId);
         $farm->delete();
         $this->loadChickens();
     }
@@ -78,6 +77,6 @@ class Chicken extends Component
     #[On('uop-selected')]
     public function onUopSelected()
     {
-        $this->chickens = \App\Models\Chicken::where('uop_id', session('selected_uop'))->get();
+        $this->chickens = ChickenModel::all();
     }
 }

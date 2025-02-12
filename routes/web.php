@@ -14,7 +14,7 @@ Route::view('profile', 'profile')
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/uop-selector', \App\Livewire\UopSelector::class);
+//    Route::get('/uop-selector', \App\Livewire\UopSelector::class);
     Route::get('/chicken', \App\Livewire\Chicken::class)->name('chicken');
     Route::get('/farm', \App\Livewire\Farm::class)->name('farm');
 });
